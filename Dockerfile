@@ -1,10 +1,10 @@
 FROM ubuntu:14.04
 MAINTAINER webofmars <contact@webofmars.com>
 
-RUN echo "deb mirror://mirrors.ubuntu.com/mirrors.txt trusty main restricted universe multiverse" > /etc/apt/sources.list; \
-	  echo "deb mirror://mirrors.ubuntu.com/mirrors.txt trusty-updates main restricted universe multiverse" >> /etc/apt/sources.list; \
-	  echo "deb mirror://mirrors.ubuntu.com/mirrors.txt trusty-backports main restricted universe multiverse" >> /etc/apt/sources.list; \
-	  echo "deb mirror://mirrors.ubuntu.com/mirrors.txt trusty-security main restricted universe multiverse" >> /etc/apt/sources.list
+RUN echo "deb http://mirrors.us.kernel.org/ubuntu/ trusty main restricted universe multiverse" > /etc/apt/sources.list; \
+	  echo "deb http://mirrors.us.kernel.org/ubuntu/ trusty-updates main restricted universe multiverse" >> /etc/apt/sources.list; \
+	  echo "deb http://mirrors.us.kernel.org/ubuntu/ trusty-backports main restricted universe multiverse" >> /etc/apt/sources.list; \
+	  echo "deb http://mirrors.us.kernel.org/ubuntu/ trusty-security main restricted universe multiverse" >> /etc/apt/sources.list
 
 RUN export DEBIAN_FRONTEND=noninteractive; \
     apt-get update; \
