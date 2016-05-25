@@ -8,7 +8,7 @@ RUN echo "deb http://mirrors.us.kernel.org/ubuntu/ trusty main restricted univer
 
 RUN export DEBIAN_FRONTEND=noninteractive; \
     apt-get update; \
-	  apt-get -qq install wget
+	  apt-get -qq install wget ssh
 
 RUN apt-key adv --keyserver keys.gnupg.net --recv-keys 14AA40EC0831756756D7F66C4F4EA0AAE5267A6C; \
 	  echo "deb http://ppa.launchpad.net/ondrej/php5-5.6/ubuntu trusty main" >> /etc/apt/sources.list; \
@@ -87,9 +87,12 @@ RUN echo 'if [ -z "$TIME_ZONE" ]; then echo "No TIME_ZONE env set!" && exit 1; f
 
 RUN echo 'if [ -n "$TIME_ZONE" ]; then sh /set_timezone.sh; fi;' > /run_all.sh; \
     echo '/usr/local/bin/set-docker-gid' >> /run_all.sh; \
+    echo 'chmod -R jenkins:jenkins /var/lib/jenkins' >> /run_all.sh; \
   	echo "service jenkins start" >> /run_all.sh; \
     echo "echo>/var/log/jenkins/jenkins.log" >> /run_all.sh; \
   	echo "tail -f /var/log/jenkins/jenkins.log;" >> /run_all.sh
+
+RUN rm -rf /tmp/* && apt-cache clean
 
 EXPOSE 8080
 
