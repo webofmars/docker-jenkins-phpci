@@ -92,7 +92,7 @@ RUN echo 'if [ -n "$TIME_ZONE" ]; then sh /set_timezone.sh; fi;' > /run_all.sh; 
     echo "echo>/var/log/jenkins/jenkins.log" >> /run_all.sh; \
   	echo "tail -f /var/log/jenkins/jenkins.log;" >> /run_all.sh
 
-RUN rm -rf /tmp/* && apt-cache clean
+RUN rm -rf /tmp/* && apt-get clean
 
 EXPOSE 8080
 
