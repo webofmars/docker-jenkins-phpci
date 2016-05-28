@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cd /tmp && wget 'https://releases.rancher.com/compose/v0.7.3/rancher-compose-linux-amd64-v0.7.3.tar.gz'
+mkdir -p /opt/tools/rancher
+tar zxf /tmp/rancher-compose-linux-amd64-v0.7.3.tar.gz -C /opt/tools/rancher
